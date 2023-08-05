@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Rating from "../components/ui/Rating";
 import Price from "../components/ui/Price";
@@ -16,6 +16,12 @@ const BookInfo = ({ books, addToCart, cart }) => {
   function bookExistsOnCart() {
     return cart.find(book => book.id === +id);
   }
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [book.id]);
+ 
+
 
   return (
     <div id="books__body">
@@ -46,17 +52,9 @@ const BookInfo = ({ books, addToCart, cart }) => {
                 <div className="book__summary">
                   <h3 className="book__sumarry--title">Summary</h3>
                   <p className="book__summary--para">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Fugiat aliquam culpa vel, aliquid magni, totam vitae quas
-                    recusandae harum nobis illum beatae officia fuga nam
-                    consequatur nesciunt? Vero, optio mollitia.
+                    {book.info}
                   </p>
-                  <p className="book__summary--para">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Fugiat aliquam culpa vel, aliquid magni, totam vitae quas
-                    recusandae harum nobis illum beatae officia fuga nam
-                    consequatur nesciunt? Vero, optio mollitia.
-                  </p>
+                 
                 </div>
                 {bookExistsOnCart() ? (
                     <Link to={`/cart`}>

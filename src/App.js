@@ -55,7 +55,7 @@ function App() {
           <Route
             path="/books/:id"
             element={
-              <BookInfo books={books} addToCart={addToCart} cart={cart} />
+              <BookInfo books={books} addToCart={addToCart} cart={cart}/>
             }
           />
           <Route
